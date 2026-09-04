@@ -985,7 +985,7 @@ async def _cache_upload_worker(
                             caption=f"yt://{video_id} | {title}",
                             disable_notification=True,
                             title=title or None,
-                            duration=int(dur_sec) if dur_sec else None,
+                            duration=int(dur_sec) if dur_sec and dur_sec > 0 else 0,
                         )
                         media_obj = (
                             getattr(msg, "audio", None)
