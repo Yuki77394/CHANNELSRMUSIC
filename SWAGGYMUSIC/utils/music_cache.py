@@ -1007,9 +1007,11 @@ async def _cache_upload_worker(
                 )
 
                 if isinstance(upload_result, Exception):
+                    import traceback
                     _log.warning(
                         f"CACHE UPLOAD FAILURE: video_id={video_id} "
-                        f"({type(upload_result).__name__}: {upload_result})"
+                        f"({type(upload_result).__name__}: {upload_result})\n"
+                        f"Full traceback:\n{traceback.format_exception(type(upload_result), upload_result, upload_result.__traceback__)}"
                     )
                     return
 
