@@ -58,6 +58,8 @@ async def auto_clean(popped):
     try:
         mystic = popped.get("mystic")
         if mystic:
+            # The message can legitimately be gone already (for example,
+            # after a queue transition). Treat deletion as best-effort.
             await mystic.delete()
-    except:
+    except Exception:
         pass
